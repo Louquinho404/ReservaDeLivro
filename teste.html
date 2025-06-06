@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reserva de Livros</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Formulário de Reserva */
+        .reserva-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .reserva-container h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        /* Lista de Livros */
+        .livros-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .livros-container h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .livro {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .livro:last-child {
+            border-bottom: none;
+        }
+        
+        .livro-capa {
+            width: 100px;
+            height: 150px;
+            background-color: #eee;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 12px;
+        }
+        
+        .livro-info {
+            flex: 1;
+        }
+        
+        .livro-titulo {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .livro-autor {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .livro-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .disponivel {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .indisponivel {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        /* Rodapé */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Biblioteca Universitária</h1>
+            <p>Sistema de Reserva de Livros</p>
+        </div>
+    </header>
+    <form>
+            <h1>QUER ANDAR DE MOTO COM OS</h1>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Misfits_Logo.png" height="150px" width="500px">
+            <p>Digite os participantes:
+                <input type="text" id="participante" required autofocus>
+                <input type="submit" value="Enviar">           
+                <input type="button" value="Prioridade" id="prioridade">
+                <input type="button" value="Confirmar" id="confirmar">
+            </p>
+        </form>
+        <h3>Lista de Participantes:</h3>
+
+    <main class="container">
+        <section class="reserva-container">
+            <h2>Reservar Livro</h2>
+            <form id="reservaForm">
+                <div class="form-group">
+                    <label for="matricula">Matrícula do Aluno</label>
+                    <input type="text" id="matricula" name="matricula" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="livro">Selecione o Livro</label>
+                    <select id="livro" name="livro" required>
+                        <option value="">-- Selecione um livro --</option>
+                        <option value="1">Introdução à Programação - João Silva</option>
+                        <option value="2">Banco de Dados Avançado - Maria Souza</option>
+                        <option value="3">Redes de Computadores - Carlos Oliveira</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataRetirada">Data de Retirada</label>
+                    <input type="date" id="dataRetirada" name="dataRetirada" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataDevolucao">Data de Devolução</label>
+                    <input type="date" id="dataDevolucao" name="dataDevolucao" required>
+                </div>
+                
+                <button type="submit">Reservar Livro</button>
+            </form>
+        </section>
+        
+        <section class="livros-container">
+            <h2>Livros Disponíveis</h2>
+            
+            <div class="livro">
+                <div class="livro-capa">Capa do Livro</div>
+                <div class="livro-info">
+                    <h3 class="livro-titulo">Introdução à Programação</h3>
+                    <p class="livro-autor">João Silva</p>
+                    <p>ISBN: 978-85-12345-67-8</p>
+                    <p>Editora: TechBooks</p>
+                    <span class="livro-status disponivel">Disponível</span>
+                </div>
+            </div>
+            
+            <div class="livro">
+                <div class="livro-capa">Capa do Livro</div>
+                <div class="livro-info">
+                    <h3 class="livro-titulo">Banco de Dados Avançado</h3>
+                    <p class="livro-autor">Maria Souza</p>
+                    <p>ISBN: 978-85-54321-98-0</p>
+                    <p>Editora: DataPress</p>
+                    <span class="livro-status disponivel">Disponível</span>
+                </div>
+            </div>
+            
+            <div class="livro">
+                <div class="livro-capa">Capa do Livro</div>
+                <div class="livro-info">
+                    <h3 class="livro-titulo">Redes de Computadores</h3>
+                    <p class="livro-autor">Carlos Oliveira</p>
+                    <p>ISBN: 978-85-98765-43-2</p>
+                    <p>Editora: NetPublications</p>
+                    <span class="livro-status indisponivel">Indisponível</span>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>Sistema de Reserva de Livros - Biblioteca Universitária &copy; 2023</p>
+        </div>
+    </footer>
+    
+    <script>
+        // JavaScript básico para o formulário
+        document.getElementById('reservaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validação simples das datas
+            const dataRetirada = new Date(document.getElementById('dataRetirada').value);
+            const dataDevolucao = new Date(document.getElementById('dataDevolucao').value);
+            
+            if (dataDevolucao <= dataRetirada) {
+                alert('A data de devolução deve ser posterior à data de retirada!');
+                return;
+            }
+            
+            // Simulação de envio do formulário
+            alert('Reserva realizada com sucesso!');
+            this.reset();
+        });
+        
+        // Preenche a data de retirada com hoje e devolução com +7 dias
+        window.onload = function() {
+            const hoje = new Date();
+            const devolucao = new Date();
+            devolucao.setDate(hoje.getDate() + 7);
+            
+            document.getElementById('dataRetirada').valueAsDate = hoje;
+            document.getElementById('dataDevolucao').valueAsDate = devolucao;
+        };
+    </script>
+</body>
+</html>

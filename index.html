@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>MOTO</title>
+<link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <h2 class="titulo">RESERVA DE LIVROS <h1>BIBLIOTECA ALBERT EINSTEN</h1></h2>
+    </header>
+    <center>
+        <main class="container">
+            <h2>Reservar Livro</h2>
+            <form id="reservaForm">
+                <div class="form-group">
+                    <label for="matricula">Matrícula do Aluno</label>
+                    <input type="text" id="matricula" name="matricula" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="participante" required autofocus>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="livro">Selecione o Livro</label>
+                    <select id="livro" name="livro" required>
+                        <option value="">-- Selecione um livro --</option>
+                        <option value="1">Introdução à Programação - João Silva</option>
+                        <option value="2">Banco de Dados Avançado - Maria Souza</option>
+                        <option value="3">Redes de Computadores - Carlos Oliveira</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataRetirada">Data de Retirada</label>
+                    <input type="date" id="dataRetirada" name="dataRetirada" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dataDevolucao">Data de Devolução</label>
+                    <input type="date" id="dataDevolucao" name="dataDevolucao" required>
+                </div>
+                
+                <button type="submit">Reservar Livro</button>
+            </form>
+        </section>
+    <section class="livros-container">
+            <h2>Livros Disponíveis</h2>
+            
+            <div class="livro">
+                <div class="livro-capa">Capa do Livro</div>
+                <div class="livro-info">
+                    <h3 class="livro-titulo">Introdução à Programação</h3>
+                    <p class="livro-autor">João Silva</p>
+                    <p>ISBN: 978-85-12345-67-8</p>
+                    <p>Editora: TechBooks</p>
+                    <span class="livro-status disponivel">Disponível</span>
+                </div>
+            </div>
+            
+            <div class="livro">
+                <div class="livro-capa">Capa do Livro</div>
+                <div class="livro-info">
+                    <h3 class="livro-titulo">Banco de Dados Avançado</h3>
+                    <p class="livro-autor">Maria Souza</p>
+                    <p>ISBN: 978-85-54321-98-0</p>
+                    <p>Editora: DataPress</p>
+                    <span class="livro-status disponivel">Disponível</span>
+                </div>
+            </div>
+            
+            <div class="livro">
+                <div class="livro-capa">Capa do Livro</div>
+                <div class="livro-info">
+                    <h3 class="livro-titulo">Redes de Computadores</h3>
+                    <p class="livro-autor">Carlos Oliveira</p>
+                    <p>ISBN: 978-85-98765-43-2</p>
+                    <p>Editora: NetPublications</p>
+                    <span class="livro-status indisponivel">Indisponível</span>
+                </div>
+            </div>
+        </section>
+    </center>
+    <script src="/javascript/script.js"></script>
+    </body>
+    </html>
