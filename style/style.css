@@ -1,10 +1,12 @@
-    * {
+@import url('https://fonts.googleapis.com/css2?family=Felipa&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: "Roboto";
         }   
-
-    @import url('https://fonts.googleapis.com/css2?family=Felipa&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
     
     body {
         background-color: aliceblue;
@@ -39,9 +41,22 @@
             
         }
     span {
-        color: rgb(0, 162, 255);
-        -webkit-text-stroke-width: 0.4px; 
-        -webkit-text-stroke-color: rgb(0, 162, 255); 
+        -webkit-text-stroke-width: 0.4px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        color: white;
+    }
+    .livro-status-disponivel {
+        background-color: #007531;
+        position: relative;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .livro-status-indisponivel {
+        background-color: #e74c3c;
+        position: relative;
+        display: inline-block;
+        margin-top: 10px;    
     }
 
     img.alta {
@@ -131,6 +146,7 @@
             margin-bottom: 20px;
             padding-bottom: 10px;
             border-bottom: 2px solid #eee;
+            font-family: 'Roboto';
         }
         
         .form-group {
@@ -220,6 +236,7 @@
             font-size: 1.2rem;
             color: #2c3e50;
             margin-bottom: 5px;
+            font-weight: 2000;
         }
         
         .livro-autor {
